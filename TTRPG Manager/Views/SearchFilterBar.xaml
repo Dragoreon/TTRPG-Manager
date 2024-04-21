@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="TTRPG_Manager.Views.SearchFilterBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TTRPG_Manager.Views"
+             xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <Border CornerRadius="10" BorderBrush="Gray" BorderThickness="1.5">
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="5,0,0,0">
+                <TextBox Text="Search" VerticalAlignment="Center" MaxWidth="100"/>
+                <Button Background="Transparent" 
+                        Content="{materialIcons:MaterialIconExt Kind=Search}" 
+                        Height="20" 
+                        RenderTransformOrigin="-0.398,0.638"/>
+            </StackPanel>
+        </Border>
+        <Button Content="{materialIcons:MaterialIconExt Kind=FilterOutline }" Height="20"></Button>
+        <Button Content="{materialIcons:MaterialIconExt Kind=ViewListOutline}" Height="20"></Button>
+        <Button Content="{materialIcons:MaterialIconExt Kind=ViewGridOutline}" Height="20"></Button>
+    </StackPanel>
+</UserControl>
