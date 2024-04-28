@@ -5,6 +5,7 @@ using System.Windows.Input;
 using TTRPG_Manager.Commands;
 using TTRPG_Manager.Models.Lists;
 using TTRPG_Manager.Models;
+using TTRPG_Manager.Stores;
 
 namespace TTRPG_Manager.ViewModels.OfViews
 {
@@ -45,13 +46,19 @@ namespace TTRPG_Manager.ViewModels.OfViews
         }
         public ICommand NewCampaignCommand { get; }
 
-
-        public CampaignDetailViewModel(Campaign campaign)
+        public CampaignDetailViewModel(Campaign campaign, NavigationStore navigationStore, Func<CampaignListingViewModel> createViewModel)
         {
             _campaign = campaign;
             // TODO: En lugar de crear esto de cero, se saca de la BD
+            CampaignBook<Campaign> campaignBook= crearDatosDePrueba();
+
+            NewCampaignCommand = new NewCampaignCommand(this, new Library(campaignBook));
+        }
+
+        private CampaignBook<Campaign> crearDatosDePrueba()
+        {
             ObservableCollection<CampaignViewModel>
-            _campaigns = new ObservableCollection<CampaignViewModel>();
+           _campaigns = new ObservableCollection<CampaignViewModel>();
             AdventureBook<Adventure> ab = new AdventureBook<Adventure>();
             HashSet<string> taglist = new HashSet<string>();
             taglist.Add("tag1");
@@ -66,12 +73,7 @@ namespace TTRPG_Manager.ViewModels.OfViews
             campaignBook.Add(new Campaign(1, DateTime.Now, "Aventuras en el salvaje azul", false, ab));
             campaignBook.Add(new Campaign(1, DateTime.Now, "Dnd8", true, ab));
             foreach (Campaign c in campaignBook.GetAll()) _campaigns.Add(new CampaignViewModel(c));
-
-
-
-            NewCampaignCommand = new NewCampaignCommand(this, new Library(campaignBook));
+            return campaignBook;
         }
-
-
     }
 }

@@ -10,7 +10,7 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel >
+    <StackPanel>
         <WrapPanel>
             <Button Content="Campañas" Command="{Binding NavigateCommand}"/>
             <Button Content="Reglas" Command="{Binding NavigateCommand}"/>

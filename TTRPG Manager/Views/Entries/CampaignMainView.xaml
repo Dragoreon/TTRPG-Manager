@@ -17,6 +17,5 @@
             <nav:SearchFilterBar HorizontalAlignment="Right"/>
         </Grid>
         <local:CampaignDetailView DataContext="{Binding CurrentViewModel}"/>
-        <!--<local:CampaignListView DataContext="{Binding CurrentViewModel}"/>-->
     </StackPanel>
 </UserControl>

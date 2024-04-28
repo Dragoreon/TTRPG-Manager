@@ -10,19 +10,21 @@ using TTRPG_Manager.ViewModels.OfViews;
 
 namespace TTRPG_Manager.Commands
 {
-    public class GoToCampaignCommand : CommandBase
+    public class NavigateCommand : CommandBase
     {
         private readonly NavigationStore _navigationStore;
+        private readonly Func<ViewModelBase> _createViewModel;
 
-        public GoToCampaignCommand(NavigationStore navigationStore)
+        public NavigateCommand(NavigationStore navigationStore, Func<ViewModelBase> createViewModel)
         {
             _navigationStore = navigationStore;
+            this._createViewModel = createViewModel;
         }
 
         public override void Execute(object parameter)
         {
             // Todo: pasar la campaña en el constructor del viewmodels
-            _navigationStore.CurrentViewModel = new CampaignDetailViewModel(new Campaign("Camp01",true));
+            _navigationStore.CurrentViewModel = _createViewModel();
         }
     }
 }

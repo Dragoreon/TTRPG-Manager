@@ -1,18 +1,18 @@
-﻿<UserControl
+﻿<UserControl x:Class="TTRPG_Manager.Views.Entries.CampaignCrudTest"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TTRPG_Manager.Views.Entries"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="TTRPG_Manager.Views.Entries.CampaignDetailView"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Background="White">
+    <StackPanel>
         <WrapPanel>
-            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="200px"/>
             <Button Content="Guardar" Command="{Binding NewCampaignCommand}"/>
+            <Button Content="Nuevo" Command="{Binding NewCampaignCommand}"/>
         </WrapPanel>
-        <materialDesign:Chip Content="Estado" IsEnabled="{Binding IsInProcess}"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="200px"/>
+        <RadioButton Content="Estado" IsEnabled="{Binding IsInProcess}"/>
         <Label Content="Lista de aventuras"/>
         <ListView ItemsSource="{Binding Adventures}">
             <ListView.View>
@@ -41,8 +41,5 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
-        <materialDesign:Chip Content="Chip"/>
-
     </StackPanel>
 </UserControl>
