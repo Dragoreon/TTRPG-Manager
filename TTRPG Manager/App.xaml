@@ -5,7 +5,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF">
     <Application.Resources>
-        <!--Todo: Migrar esto a una biblioteca y exportarlo desde ahí-->
+        <!--TODO: Migrar esto a una biblioteca y exportarlo desde ahí-->
         <!--Fuentes y colores de la app-->
         <FontFamily x:Key="font-title" >./Resources/#MerriWeather</FontFamily>
         <FontFamily x:Key="font-text">/Resources/#MerriWeather-Sans</FontFamily>
@@ -21,6 +21,9 @@
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontFamily" Value="{StaticResource font-title}"></Setter>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TitleCard">
+            <Setter Property="FontSize" Value="24.2"></Setter>
         </Style>
 
         <!--Intento de crear un estilo de borde de textbox transparente, visible solo al pulsar-->

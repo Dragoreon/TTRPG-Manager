@@ -22,7 +22,7 @@ namespace TTRPG_Manager.ViewModels.OfViews
             _campaigns = new ObservableCollection<CampaignViewModel>();
             meterDatosDePrueba();
 
-            GoToCampaignCommand = new NavigateCommand(navigationStore,createCampaignDetailViewModel);
+            GoToCampaignCommand = new NavigateCommand<CampaignListingViewModel>(navigationStore,createCampaignDetailViewModel);
         }
 
         private void meterDatosDePrueba()

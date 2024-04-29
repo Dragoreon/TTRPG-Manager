@@ -7,11 +7,13 @@ namespace TTRPG_Manager.DBContexts;
 
 public partial class TtrpgmanagerContext : DbContext
 {
+    private string _connectionString;
     public TtrpgmanagerContext()
     {
     }
-    public TtrpgmanagerContext(DbContextOptions options) : base(options)
+    public TtrpgmanagerContext(DbContextOptions options, string connectionString) : base(options)
     {
+        _connectionString = connectionString;
     }
 
     public virtual DbSet<Aventura> Aventuras { get; set; }
@@ -32,7 +34,7 @@ public partial class TtrpgmanagerContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         // #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS01;Database=TTRPGManager;Trusted_Connection=True;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer(_connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

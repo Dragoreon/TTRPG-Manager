@@ -22,6 +22,16 @@ namespace TTRPG_Manager.Models
         public Dictionary<string,object> Points { get; set; }
         public Player Player { get; set; }
         public AdventureBook<Adventure> Adventures{ get; set; } 
-        public Character() { }
+        public Character() { 
+        }
+
+        public Character(int id, DateTime creationDate, string name, string archetype, bool isPlayable)
+        {
+            Id = id;
+            CreationDate = creationDate;
+            Name = name;
+            Archetype = archetype;
+            IsPlayable = isPlayable;
+        }
     }
 }

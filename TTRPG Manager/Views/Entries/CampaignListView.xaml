@@ -16,7 +16,7 @@
     <StackPanel >
         <StackPanel Background="White" Orientation="Horizontal">
             <Label Content="Campañas"/>
-            <Button Content="Nueva" Command="{Binding NewBlankCampaignCommand}"/>
+            <Button Content="Nueva (no hace nada) "/>
             <Button Content="Ir a campaña" Command="{Binding GoToCampaignCommand}"/>
         </StackPanel>
         <ListView ItemsSource="{Binding Campaigns}">

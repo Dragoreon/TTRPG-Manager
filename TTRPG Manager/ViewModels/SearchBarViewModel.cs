@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace TTRPG_Manager.ViewModels
 {
-    public class SystemViewModel : ViewModelBase
+    public class SearchBarViewModel : ViewModelBase
     {
 		private string search;
 		public string Search

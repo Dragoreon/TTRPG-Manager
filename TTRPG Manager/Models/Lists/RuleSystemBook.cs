@@ -2,7 +2,7 @@
 
 namespace TTRPG_Manager.Models
 {
-    public class RuleManualCollection<T> : BookBase<T> where T : RuleManual
+    public class RuleSystemBook<T> : BookBase<T> where T : RuleSystem
     {
 
     }

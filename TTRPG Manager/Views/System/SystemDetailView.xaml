@@ -7,11 +7,28 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Background="White">
-        <WrapPanel>
-            <Label Content="Navigation>direction"></Label>
+        <TextBox Text="{Binding Name}" FontSize="20"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Manuales" FontSize="16"/>
+            <local:SearchFilterBar Grid.Column="1"/>
+        </Grid>
+        <WrapPanel Orientation="Horizontal" Width="auto" Height="auto" Background="ForestGreen" DataContext="{Binding RuleManuals}">
+            <ItemsControl ItemsSource="{Binding RuleSystems}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!--TODO: Cambiar este estilo hardcodeado por una llamada a una bilioteca-->
+                        <Border CornerRadius="10" BorderBrush="Gray" BorderThickness="1.5" Margin="10px">
+                            <StackPanel Margin="10px">
+                                <TextBlock x:Name="TitleCard" Text="{Binding FullName}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </WrapPanel>
-        <TextBox Text="System Name"></TextBox>
-        <local:SearchFilterBar/>
-        
     </StackPanel>
 </UserControl>

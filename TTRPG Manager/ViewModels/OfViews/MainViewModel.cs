@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using TTRPG_Manager.Stores;
 using TTRPG_Manager.ViewModels.OfViews;
 
@@ -13,13 +8,19 @@ namespace TTRPG_Manager.ViewModels
     {
         private readonly NavigationStore _navigationStore;
         public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
+        public NavBarViewModel NavBarViewModel { get; }
 
-        public ICommand NavigateCommand { get; }
+        public ICommand NavigateRuleSystemsCommand => NavBarViewModel.NavigateSystemsCommand;
+        public ICommand NavigateCampaignsCommand => NavBarViewModel.NavigateCampaignsCommand;
+        public ICommand NavigateCharactersCommand => NavBarViewModel.NavigateCharactersCommand;
 
-        public MainViewModel(NavigationStore navigationStore)
+
+        public MainViewModel(NavigationStore navigationStore, NavBarViewModel navBarViewModel)
         {
             _navigationStore = navigationStore;
+            NavBarViewModel = navBarViewModel;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+
         }
 
         private void OnCurrentViewModelChanged()

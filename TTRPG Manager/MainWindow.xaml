@@ -5,17 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TTRPG_Manager" 
         xmlns:vms="clr-namespace:TTRPG_Manager.ViewModels.OfViews"
+        xmlns:views="clr-namespace:TTRPG_Manager.Views" 
         xmlns:entries="clr-namespace:TTRPG_Manager.Views.Entries" 
+        xmlns:characters="clr-namespace:TTRPG_Manager.Views.Characters" 
         xmlns:viewmodels="clr-namespace:TTRPG_Manager.ViewModels" 
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-        <WrapPanel>
-            <Button Content="Campañas" Command="{Binding NavigateCommand}"/>
-            <Button Content="Reglas" Command="{Binding NavigateCommand}"/>
-            <Button Content="Personas" Command="{Binding NavigateCommand}"/>
-        </WrapPanel>
+        <views:NavBarView/>
         <Grid>
             <Grid.Resources>
                 <DataTemplate DataType="{x:Type vms:CampaignListingViewModel}">
@@ -23,6 +21,12 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type vms:CampaignDetailViewModel}">
                     <entries:CampaignDetailView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:CharacterListingViewModel}">
+                    <characters:CharacterListView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:RuleSystemListingViewModel}">
+                    <views:SystemsView/>
                 </DataTemplate>
             </Grid.Resources>
             <ContentControl Content="{Binding CurrentViewModel}"/>

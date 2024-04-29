@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace TTRPG_Manager.ViewModels
 {
@@ -14,6 +9,7 @@ namespace TTRPG_Manager.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    
+
+        public virtual void Dispose() { }
     }
 }

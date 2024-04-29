@@ -10,8 +10,7 @@ namespace TTRPG_Manager.Models
         public DateTime CreationDate { get; set; }
         public string SystemClass { get; set; }
         public List<string> TagList { get; set; }
-        public RuleManualCollection<RuleManual> RuleManuals { get; set; }
-
+        public RuleManualBook<RuleManual> RuleManuals { get; set; }
 
         /// <summary>
         /// Constructor principal para obtener datos de la BD

@@ -14,7 +14,7 @@ namespace TTRPG_Manager.DBContexts
         public TtrpgmanagerContext CreateDbConection()
         {
             DbContextOptions options = new DbContextOptionsBuilder().UseSqlServer(_connectionString).Options;
-            return new TtrpgmanagerContext(options);
+            return new TtrpgmanagerContext(options, _connectionString);
         }
 
         TtrpgmanagerContext IDesignTimeDbContextFactory<TtrpgmanagerContext>.CreateDbContext(string[] args)
