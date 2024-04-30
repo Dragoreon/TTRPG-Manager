@@ -13,6 +13,14 @@ namespace TTRPG_Manager.ViewModels
         public DateTime CreationDate => _adventure.CreationDate;
         public bool IsInProcess => _adventure.IsInProcess;
         private HashSet<string> _tagList => _adventure.TagList;
+        public string IsInProcessString
+        {
+            get
+            {
+                if (IsInProcess) return "En proceso";
+                return "Terminado";
+            }
+        }
 
         public string TagList => _adventure.TagListString();
 

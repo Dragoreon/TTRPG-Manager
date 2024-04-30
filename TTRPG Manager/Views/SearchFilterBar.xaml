@@ -12,7 +12,7 @@
             <Setter Property="Background" Value="Transparent"></Setter>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <StackPanel VerticalAlignment="Center">
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
         <Border CornerRadius="10" BorderBrush="Gray" BorderThickness="1.5" >
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="5,0,0,0">
@@ -28,5 +28,5 @@
         <Button Height="20" Command="{Binding ListViewCommand}" Content="{materialIcons:MaterialIconExt Kind=ViewListOutline}" ></Button>
         <Button Height="20" Command="{Binding CardViewCommand}" Content="{materialIcons:MaterialIconExt Kind=ViewGridOutline}" ></Button>
     </StackPanel>
-    </Grid>
+    </StackPanel>
 </UserControl>

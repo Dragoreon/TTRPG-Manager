@@ -12,7 +12,15 @@ namespace TTRPG_Manager.ViewModels
         public string Name => _campaign.Name;
         public DateTime CreationDate => _campaign.CreationDate;
         public bool IsInProcess => _campaign.IsInProcess;
-        public string TagList => _campaign.TagListString();
+        public HashSet<string> TagList => _campaign.TagList;
+
+        public string IsInProcessString {
+            get
+            {
+                if (IsInProcess) return "En proceso";
+                return "Terminada";
+            }
+        }
 
         //Todo: cambiar esto a una observable collection?
         public AdventureBook<Adventure> AdventureBook => _campaign._adventureBook;

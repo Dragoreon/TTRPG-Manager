@@ -28,6 +28,9 @@
                 <DataTemplate DataType="{x:Type vms:RuleSystemListingViewModel}">
                     <views:SystemsView/>
                 </DataTemplate>
+                <Style TargetType="ContentControl">
+                    <Setter Property="Margin" Value="30px"/>
+                </Style>
             </Grid.Resources>
             <ContentControl Content="{Binding CurrentViewModel}"/>
         </Grid>

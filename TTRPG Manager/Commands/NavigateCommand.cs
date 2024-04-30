@@ -32,7 +32,7 @@ namespace TTRPG_Manager.Commands
         {
             // Todo: pasar la campaña en el constructor del viewmodels
             _navigationService.Navigate();
-            //_navigationStore.CurrentViewModel = _createViewModel();
+            // _navigationStore.CurrentViewModel = _createViewModel();
         }
     }
 }
