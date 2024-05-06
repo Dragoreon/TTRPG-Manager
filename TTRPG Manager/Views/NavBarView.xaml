@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TTRPG_Manager.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignWidth="800">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="BorderBrush" Value="Transparent"/>
@@ -19,10 +19,13 @@
         </Style>
     </UserControl.Resources>
     <Border BorderBrush="#A8B9BD"  BorderThickness="0px 0px 0px 2px">
-        <WrapPanel>
+        <ToolBarPanel Orientation="Horizontal">
             <Button Content="Campañas" Command="{Binding NavigateCampaignsCommand}"/>
             <Button Content="Sistemas" Command="{Binding NavigateRuleSystemsCommand}"/>
             <Button Content="Personajes" Command="{Binding NavigateCharactersCommand}"/>
-        </WrapPanel>
+            <Menu/>
+            <Menu/>
+            <ToolBarPanel/>
+        </ToolBarPanel>
         </Border>
 </UserControl>

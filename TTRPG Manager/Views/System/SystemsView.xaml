@@ -9,12 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Background="White">
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="Sistemas" FontSize="20"/>
-            <local:SearchFilterBar Grid.Column="1"/>
+            <Label Content="Sistemas" FontSize="24"/>
+            <local:SearchFilterBar />
         </Grid>
         <WrapPanel Orientation="Horizontal" Width="auto" Height="auto" Background="BlanchedAlmond">
             <ItemsControl ItemsSource="{Binding RuleSystems}">
