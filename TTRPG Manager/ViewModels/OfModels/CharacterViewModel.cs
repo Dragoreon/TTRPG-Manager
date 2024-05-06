@@ -10,6 +10,7 @@ namespace TTRPG_Manager.ViewModels
 
         public int Id => _Character.Id;
         public string Name => _Character.Name;
+        public string Archetype => _Character.Archetype;
         public DateTime CreationDate => _Character.CreationDate;
         public bool IsPlayable => _Character.IsPlayable;
 

@@ -27,8 +27,12 @@ namespace TTRPG_Manager
             ICampaignProvider campaignProvider = new DatabaseCampaignsProvider(_designTimeDbContextFactory);
         }
 
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            Window splashScreen = new SplashScreen();
+            splashScreen.Show();
+
             // Todo: cargar datos
             DbContextOptions options = new DbContextOptionsBuilder().UseSqlServer(CONNECTION_STRING).Options;
             TtrpgmanagerContext dbContext = new TtrpgmanagerContext(options, CONNECTION_STRING);
@@ -51,6 +55,7 @@ namespace TTRPG_Manager
             MainWindow.Show();
 
             base.OnStartup(e);
+            splashScreen.Close();
         }
 
         private NavigationService<CampaignListingViewModel> CreateCampaignNavigationService()
