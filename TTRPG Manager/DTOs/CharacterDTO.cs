@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TTRPG_Manager.Models;
+namespace TTRPG_Manager.DTOs;
 
-public partial class Personaje
+public partial class CharacterDTO
 {
     public int Id { get; set; }
 
@@ -23,7 +23,7 @@ public partial class Personaje
 
     public int? PersonaJugadora { get; set; }
 
-    public virtual Persona PersonaJugadoraNavigation { get; set; }
+    public virtual PlayerDTO PersonaJugadoraNavigation { get; set; }
 
-    public virtual ICollection<Aventura> IdAventuras { get; set; } = new List<Aventura>();
+    public virtual ICollection<AdventureDTO> IdAventuras { get; set; } = new List<AdventureDTO>();
 }

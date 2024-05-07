@@ -18,13 +18,13 @@ namespace TTRPG_Manager
         // "Server=localhost\\SQLEXPRESS01;Database=TTRPGManager"
         private readonly NavigationStore _navigatonStore;
         private readonly Library _library;
-        private readonly TTRPGManagerDesignTimeDbContextFactory _designTimeDbContextFactory;
+        private readonly TTRPGManagerDBContextFactory _DbContextFactory;
 
         public App()
         {
             _navigatonStore = new NavigationStore();
-            _designTimeDbContextFactory = new TTRPGManagerDesignTimeDbContextFactory(CONNECTION_STRING);
-            ICampaignProvider campaignProvider = new DatabaseCampaignsProvider(_designTimeDbContextFactory);
+            _DbContextFactory = new TTRPGManagerDBContextFactory(CONNECTION_STRING);
+            ICampaignProvider campaignProvider = new DatabaseCampaignsProvider(_DbContextFactory);
         }
 
 

@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TTRPG_Manager.DTOs
+namespace TTRPG_Manager.DTOs;
+
+public partial class CampaignDTO
 {
-    public class CampaignDTO
-    {
-        [Key]
-        public Guid Id { get; set; }
-        public DateTime CreationDate { get; set; }
-        public string Name { get; set; }
-        public bool IsInProcess { get; set; }
+    public int Id { get; set; }
 
-    }
+    public DateTime FechaCreacion { get; set; }
+
+    public string Nombre { get; set; }
+
+    public bool EnProceso { get; set; }
+
+    public virtual ICollection<AdventureDTO> Aventuras { get; set; } = new List<AdventureDTO>();
 }

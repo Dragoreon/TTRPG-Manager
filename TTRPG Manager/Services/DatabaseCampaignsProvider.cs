@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,20 +10,26 @@ namespace TTRPG_Manager.Services
 {
     public class DatabaseCampaignsProvider : ICampaignProvider
     {
-        private readonly TTRPGManagerDesignTimeDbContextFactory _factory;
-        
-        public DatabaseCampaignsProvider(TTRPGManagerDesignTimeDbContextFactory factory)
+        private readonly TTRPGManagerDBContextFactory _dbContextFactory;
+
+        public DatabaseCampaignsProvider(TTRPGManagerDBContextFactory factory)
         {
-            _factory = factory;
+            _dbContextFactory = factory;
         }
 
-        public async Task<IEnumerable<Campana>> GetAllCampaigns()
+        public async Task<IEnumerable<Campaign>> GetAllCampaigns()
         {
-            using (TtrpgmanagerContext context = _factory.CreateDbConection())
+            using (TtrpgmanagerContext context = _dbContextFactory.CreateDBContext())
             {
-                List<Campana> campaignDTOs = await context.Campanas.ToListAsync();
-                return campaignDTOs;
+                IEnumerable<CampaignDTO> campaignDTOs = await context.Campaigns.ToListAsync();
+                return campaignDTOs.Select(r => ToCampaign(r));
             }
+        }
+
+        private Campaign ToCampaign(CampaignDTO dto)
+        {
+            //return new Campaign(dto.Id, dto.FechaCreacion, dto.Nombre, dto.EnProceso, dto.Aventuras);
+            return new Campaign();
         }
     }
 }

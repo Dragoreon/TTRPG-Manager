@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TTRPG_Manager.Models;
+namespace TTRPG_Manager.DTOs;
 
-public partial class Sistema
+public partial class RuleSystemDTO
 {
     public string Nombre { get; set; }
 
@@ -15,5 +15,5 @@ public partial class Sistema
 
     public byte[] ListaEtiquetas { get; set; }
 
-    public virtual ICollection<ManualRegla> ManualReglas { get; set; } = new List<ManualRegla>();
+    public virtual ICollection<RuleManualDTO> ManualReglas { get; set; } = new List<RuleManualDTO>();
 }

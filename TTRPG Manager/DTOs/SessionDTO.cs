@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TTRPG_Manager.Models;
+namespace TTRPG_Manager.DTOs;
 
-public partial class Partidum
+public partial class SessionDTO
 {
     public int Id { get; set; }
 
     public int NumPartida { get; set; }
 
-    public virtual Entradum IdNavigation { get; set; }
+    public virtual EntryDTO IdNavigation { get; set; }
 }

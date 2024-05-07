@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TTRPG_Manager.Models;
+namespace TTRPG_Manager.DTOs;
 
-public partial class ManualRegla
+public partial class RuleManualDTO
 {
     public int Id { get; set; }
 
@@ -21,7 +21,7 @@ public partial class ManualRegla
 
     public byte[] DicBookmarks { get; set; }
 
-    public virtual Sistema Sistema { get; set; }
+    public virtual RuleSystemDTO Sistema { get; set; }
 
-    public virtual ICollection<Aventura> Aventuras { get; set; } = new List<Aventura>();
+    public virtual ICollection<AdventureDTO> Aventuras { get; set; } = new List<AdventureDTO>();
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using TTRPG_Manager.Models;
+using TTRPG_Manager.DTOs;
 
 namespace TTRPG_Manager.DBContexts;
 
@@ -16,29 +16,28 @@ public partial class TtrpgmanagerContext : DbContext
         _connectionString = connectionString;
     }
 
-    public virtual DbSet<Aventura> Aventuras { get; set; }
+    public virtual DbSet<AdventureDTO> Adventures { get; set; }
 
-    public virtual DbSet<Campana> Campanas { get; set; }
+    public virtual DbSet<CampaignDTO> Campaigns { get; set; }
 
-    public virtual DbSet<Entradum> Entrada { get; set; }
+    public virtual DbSet<EntryDTO> Entries { get; set; }
 
-    public virtual DbSet<ManualRegla> ManualReglas { get; set; }
+    public virtual DbSet<RuleManualDTO> RuleManuals { get; set; }
 
-    public virtual DbSet<Partidum> Partida { get; set; }
+    public virtual DbSet<SessionDTO> Sessions { get; set; }
 
-    public virtual DbSet<Persona> Personas { get; set; }
+    public virtual DbSet<PlayerDTO> Players { get; set; }
 
-    public virtual DbSet<Personaje> Personajes { get; set; }
+    public virtual DbSet<CharacterDTO> Characters { get; set; }
 
-    public virtual DbSet<Sistema> Sistemas { get; set; }
+    public virtual DbSet<RuleSystemDTO> RuleSystems { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        // #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer(_connectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Aventura>(entity =>
+        modelBuilder.Entity<AdventureDTO>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("pk_aventura");
 
@@ -69,11 +68,11 @@ public partial class TtrpgmanagerContext : DbContext
             entity.HasMany(d => d.ManualReglas).WithMany(p => p.Aventuras)
                 .UsingEntity<Dictionary<string, object>>(
                     "AventuraManual",
-                    r => r.HasOne<ManualRegla>().WithMany()
+                    r => r.HasOne<RuleManualDTO>().WithMany()
                         .HasForeignKey("ManualReglas")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("fk_aventura-manual_manual"),
-                    l => l.HasOne<Aventura>().WithMany()
+                    l => l.HasOne<AdventureDTO>().WithMany()
                         .HasForeignKey("Aventura")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("fk_aventura-manual_aventura"),
@@ -86,7 +85,7 @@ public partial class TtrpgmanagerContext : DbContext
                     });
         });
 
-        modelBuilder.Entity<Campana>(entity =>
+        modelBuilder.Entity<CampaignDTO>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("pk_campana");
 
@@ -104,7 +103,7 @@ public partial class TtrpgmanagerContext : DbContext
                 .HasColumnName("nombre");
         });
 
-        modelBuilder.Entity<Entradum>(entity =>
+        modelBuilder.Entity<EntryDTO>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("pk_entrada");
 
@@ -138,7 +137,7 @@ public partial class TtrpgmanagerContext : DbContext
                 .HasConstraintName("fk_entrada_entrada");
         });
 
-        modelBuilder.Entity<ManualRegla>(entity =>
+        modelBuilder.Entity<RuleManualDTO>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("pk_manual");
 
@@ -176,7 +175,7 @@ public partial class TtrpgmanagerContext : DbContext
                 .HasConstraintName("fk_manual_sistema");
         });
 
-        modelBuilder.Entity<Partidum>(entity =>
+        modelBuilder.Entity<SessionDTO>(entity =>
         {
             entity.HasKey(e => new { e.Id, e.NumPartida }).HasName("pk_partida");
 
@@ -191,7 +190,7 @@ public partial class TtrpgmanagerContext : DbContext
                 .HasConstraintName("fk_partida_entrada");
         });
 
-        modelBuilder.Entity<Persona>(entity =>
+        modelBuilder.Entity<PlayerDTO>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("pk_persona");
 
@@ -223,7 +222,7 @@ public partial class TtrpgmanagerContext : DbContext
                 .HasColumnName("objetivo");
         });
 
-        modelBuilder.Entity<Personaje>(entity =>
+        modelBuilder.Entity<CharacterDTO>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("pk_personaje");
 
@@ -263,11 +262,11 @@ public partial class TtrpgmanagerContext : DbContext
             entity.HasMany(d => d.IdAventuras).WithMany(p => p.IdPersonajes)
                 .UsingEntity<Dictionary<string, object>>(
                     "PersonajeAventura",
-                    r => r.HasOne<Aventura>().WithMany()
+                    r => r.HasOne<AdventureDTO>().WithMany()
                         .HasForeignKey("IdAventura")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("fk_aventura"),
-                    l => l.HasOne<Personaje>().WithMany()
+                    l => l.HasOne<CharacterDTO>().WithMany()
                         .HasForeignKey("IdPersonaje")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("fk_personaje"),
@@ -280,7 +279,7 @@ public partial class TtrpgmanagerContext : DbContext
                     });
         });
 
-        modelBuilder.Entity<Sistema>(entity =>
+        modelBuilder.Entity<RuleSystemDTO>(entity =>
         {
             entity.HasKey(e => new { e.Nombre, e.Edicion }).HasName("pk_sistema");
 

@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TTRPG_Manager.Views"
-             xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              mc:Ignorable="d">
     <UserControl.Resources>
         <Style TargetType="Button">
@@ -19,7 +18,7 @@
                 <TextBox Text="Search" VerticalAlignment="Center" MinWidth="100" BorderBrush="{x:Null}" Background="{x:Null}" SelectionBrush="{x:Null}"/>
                 <Button Background="Transparent" 
                         Command="{Binding SearchCommand}"
-                        Content="{materialIcons:MaterialIconExt Kind=Search}" 
+                        Content="Search"
                         Height="20" 
                         RenderTransformOrigin="-0.398,0.638"/>
             </StackPanel>

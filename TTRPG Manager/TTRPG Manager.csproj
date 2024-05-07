@@ -40,8 +40,8 @@
     <Folder Include="Resources\Icons\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Material.Icons" Version="2.1.0" />
-    <PackageReference Include="Material.Icons.WPF" Version="2.1.0" />
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Material.Icons.WPF" Version="2.1.9" />
     <PackageReference Include="MaterialDesignColors" Version="3.0.0" />
     <PackageReference Include="MaterialDesignThemes" Version="5.0.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
